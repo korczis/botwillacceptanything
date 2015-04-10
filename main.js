@@ -1,5 +1,6 @@
-(function () {
-    'use strict';
+(function() {
+    "use strict;"
+
     var config = require('./config.js');
     var Twitter = require('./lib/twitter.js');
     var git = require('gift');
@@ -17,8 +18,8 @@
     });
     gh.authenticate(config.githubAuth);
 
-    var voting = require('./lib/voting.js')(config, gh, Twitter);
-    var webserver = require('./lib/webserver.js')(config, gh);
+    var voting = require('./lib/voting.js')(config, gh, Twitter, events);
+    var webserver = require('./lib/webserver.js')(config, events);
 
 // if we merge something, `git sync` the changes and start the new version
     voting.on('merge', function (pr) {
@@ -46,7 +47,6 @@
     }
 
 // starts ourself up in a new process, and kills the current one
-<<<<<<< HEAD
     function restart() {
         var child = spawn('node', [__dirname + "/launcher.js"], {
             detached: true,
@@ -91,43 +91,5 @@
 
     process.on('uncaughtException', function (err) {
         console.error('UNCAUGHT ERROR: ' + err);
-=======
-function restart() {
-  var child = spawn('node', [__dirname + "/lib/launcher.js"], {
-    detached: true,
-    stdio: 'inherit'
-  });
-  child.unref();
-
-  // TODO: ensure child is alive before terminating self
-  process.exit(0);
-}
-
-function considerExistence() {
-  return undefined;
-}
-
-function main() {
-  // find the hash of the current HEAD
-  head(function(err, initial) {
-    if(err) return console.error('error checking HEAD:', err);
-
-    // make sure we are in sync with the remote repo
-    sync(function(err) {
-      if(err) return console.error('error pulling from origin/master:', err);
-
-      head(function(err, current) {
-        if(err) return console.error('error checking HEAD:', err);
-
-        // if we just got a new version, upgrade npm packages and restart.
-        if(initial !== current) return restart();
-
-        console.log('Bot is initialized. HEAD:', current);
-        considerExistence();
-
-        // Allow the voting system to bootstrap and begin monitoring PRs.
-        voting.initialize();
-      });
->>>>>>> 17633f24d911100bc81941fa83f75a4c3fdf6f29
     });
 }());
