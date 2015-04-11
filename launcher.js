@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 (function() {
+=======
+(function () {
+    'use strict';
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
     var spawn = require('child_process').spawn;
 
     function startMain(code) {
@@ -22,6 +27,11 @@
         child.on('close', startMain);
     }
 
+<<<<<<< HEAD
     npmInstall();
 }());
+=======
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
 
+    npmInstall();
+}());

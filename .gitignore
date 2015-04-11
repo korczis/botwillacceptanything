@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # config
 config.js
 
+=======
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
 # Logs
 logs
 *.log
@@ -40,4 +43,8 @@ node_modules
 public/components
 
 tmp
+<<<<<<< HEAD
 secrets.yml
+=======
+
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9

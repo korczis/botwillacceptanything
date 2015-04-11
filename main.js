@@ -1,9 +1,17 @@
 (function() {
+<<<<<<< HEAD
+=======
+    "use strict;"
+
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
     var config = require('./config.js');
     var Twitter = require('./lib/twitter.js');
     var git = require('gift');
     var Github = require('github');
+<<<<<<< HEAD
     var irc = require('./lib/irc.js')(config);
+=======
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
     var path = require('path');
     var spawn = require('child_process').spawn;
 
@@ -17,7 +25,11 @@
     });
     gh.authenticate(config.githubAuth);
 
+<<<<<<< HEAD
     var voting = require('./lib/voting.js')(config, gh, Twitter, events, irc);
+=======
+    var voting = require('./lib/voting.js')(config, gh, Twitter, events);
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
     var webserver = require('./lib/webserver.js')(config, events);
 
 // if we merge something, `git sync` the changes and start the new version
@@ -89,6 +101,10 @@
     main();
 
     process.on('uncaughtException', function (err) {
+<<<<<<< HEAD
         console.error('UNCAUGHT ERROR: ' + err + '\n' + err.stack);
+=======
+        console.error('UNCAUGHT ERROR: ' + err);
+>>>>>>> 8e46d2e8cf908ef4bcf38bd6bf31e1b8ca5ac7d9
     });
 }());
