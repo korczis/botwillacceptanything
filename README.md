@@ -3,6 +3,10 @@
 ## Status
 
 [![Build Status](https://travis-ci.org/botwillacceptanything/botwillacceptanything.svg?branch=master)](https://travis-ci.org/botwillacceptanything/botwillacceptanything)
+[![Code Climate](https://codeclimate.com/github/botwillacceptanything/botwillacceptanything/badges/gpa.svg)](https://codeclimate.com/github/botwillacceptanything/botwillacceptanything)
+[![Coverage Status](https://coveralls.io/repos/botwillacceptanything/botwillacceptanything/badge.png?branch=master)](https://coveralls.io/r/botwillacceptanything/botwillacceptanything?branch=master)
+[![Dependency Status](https://gemnasium.com/botwillacceptanything/botwillacceptanything.svg)](https://gemnasium.com/botwillacceptanything/botwillacceptanything)
+[![Pinkie Pie Approval Status](http://dosowisko.net/pinkiepieapproved.svg)](https://www.youtube.com/watch?v=FULyN9Ai-A0)
 
 ### *The project where anything goes, as long as the code allows it.*
 
@@ -14,10 +18,14 @@ A bot will automatically merge any PR on this repo that gets enough votes from t
 * :star: **Star the repo**, or else your votes won't get counted
 * On a pull request thread, add your vote along with a short explanation and/or feedback to the author. The string `:+1:` (:+1:) anywhere within the comment makes the comment count as a vote *for* the PR to pass; conversely, the string `:-1:` (:-1:) anywhere within the comment makes the comment count as a vote *against* the PR.
 
+## Contributing
+
+Anyone can create a pull request, and it is greatly appreciated by the community. In order for a pull request to be accepted, the bot has requested that it meets the criteria in its [Definition of Done](https://github.com/botwillacceptanything/botwillacceptanything/blob/master/DoD.md). If you're looking for ideas, please look at [ideas.md](https://github.com/botwillacceptanything/botwillacceptanything/blob/master/ideas.md), and join us in our [IRC](http://kiwiirc.com/client/irc.freenode.net/botwillacceptanything) for ideas or advice on how to implement something.
+
 ## Community
 
-Hang out with us in IRC: [**#botwillacceptanything** on Freenode.](http://kiwiirc.com/client/irc.freenode.net/botwillacceptanything)  
-The bot is [**@anythingbot** on Twitter.](https://twitter.com/anythingbot/)  
+Hang out with us in IRC: [**#botwillacceptanything** on Freenode.](http://kiwiirc.com/client/irc.freenode.net/botwillacceptanything)
+The bot is [**@anythingbot** on Twitter.](https://twitter.com/anythingbot/)
 
 ## Running Servers
 
@@ -36,22 +44,29 @@ The bot has a built-in webserver for monitoring its current state.
 
 1. Fork this repo.
 1. Get yourself an OAuth token for github at https://github.com/settings/tokens/new. (TODO what scopes are required?)
-1. Copy config.template.js -> config.js and modify accordingly.
+1. Copy configs/template.js -> configs/custom.js and modify accordingly.
+1. Disable any items in the mocks section that you would like to function normally.
 
 ```javascript
-$ cp config.template.js config.js
-$ vim config.js
-$ cat config.js
+$ cp configs/template.js configs/custom.js
+$ vim configs/custom.js
+$ cat configs/custom.js
 (function () {
     'use strict';
 
     module.exports = {
+        webserver: {
+            port: 3000
+        },
         user: "YOUR_GITHUB_USERNAME",
         repo: "botwillacceptanything",
         githubAuth: {
             type: "oauth",
             token: "YOUR_OAUTH_TOKEN"
-        }
+        },
+        mocks: {
+            twitter: true,
+        },
     };
 }());
 
@@ -73,6 +88,10 @@ $ cat config.js
 ```javascript
 exports.githubAuth.webhookSecret = 'rsvz9ytsjMpYfKW8CO8SQPSoxiJsVb03';
 ```
+
+## Our motto
+
+> Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke
 
 ## License
 
